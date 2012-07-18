@@ -23,18 +23,24 @@ Thus, beyond simply pitching, the challenge was to engage the audience hence the
 
 Completing the technical objective with a humanoid consists of two major parts: 1) end-effector velocity control and 2) balance/stabilization. 
 There are many examples of throwing/pitching machines made by commercial companies such as Louisville Slugger$^{TM}$, Jugs$^{TM}$, and Atec$^{TM}$ to name a few.  
-These devices typically contain one to two fly wheels that the ball travels through in order to be launched or a spring loaded arm that is compressed and released.
-None of these robots are humanoid or bipedal.
-All of these devices are well planted to the ground to ensure stability.
-
-Robots designed for throwing come in many shapes and sizes depending on the objective.  
-2-DOF mechanisms are able to throw in $R^3$ space with the correct kinematic structure.  
-Visual feedback was used in the basketball throwing robot ($\leq 7$ DOF) by Hu et al.~\cite{5649335} achieving an accuracy of 99\% at distances $\leq$ 3 m.  
-This robot was fixed to the ground to guarantee stability.
+%These devices typically contain one to two fly wheels that the ball travels through in order to be launched or a spring loaded arm that is compressed and released.
+%Robots designed for throwing come in many shapes and sizes depending on the objective.  
+%2-DOF mechanisms are able to throw in $R^3$ space with the correct kinematic structure.  
+%Visual feedback was used in the basketball throwing robot ($\leq 7$ DOF) by Hu et al.~\cite{5649335} achieving an accuracy of 99\% at distances $\leq$ 3 m.  
+%This robot was fixed to the ground to guarantee stability.
 The PhillieBot\footnote{PhillieBot Video: http://youtu.be/ShId-vZ-ZEY} made by the GRASP Lab at the University of Pennsylvania was the robot that threw the first pitch at the first annual Philadelphia Science Festival \textit{Science Night at the Ballpark} in 2011.  
 The PhillieBot consisted of a $\leq 7$ DOF arm with a pneumatic wrist actuator to increase end-effector velocity at the release point.  
 The arm was attached to a wheeled mobile platform.
-None of the latter robots are anthropomorphic thus they limit the audience engagement.
+All of these robots/devices are well planted to the ground/base to ensure stability.
+None of the latter robots is are anthropomorphic thus limiting their audience engagement.
+
+\begin{figure*}[t]
+  \centering
+\includegraphics[width=1.0\textwidth]{./pix/preThrow2.png}
+  \caption{Frame overlay of the Hubo throwing overhand a distance of 10 m (32.8 feet) with a release angle of 40$^o$ and a tip speed of 10 $\frac{m}{s}$.  Captured at 20 fps with a shutter speed of 1/30 sec.  Each of the white dashes of in the image is the actual baseball as picked up by the video camera.}
+  \label{fig:hubo-throw-test}
+\end{figure*}
+
 
 Kim et al. \cite{5686315,JooH2011438} takes the research to the next level with finding optimal overhand and sidearm throwing motions for a high degree of freedom humanoid computer model.  
 The model consists of 55-DOF and is not fixed to mechanical ground or a massive base.  
