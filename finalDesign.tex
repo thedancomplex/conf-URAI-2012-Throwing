@@ -1,4 +1,4 @@
-\section{Final Design}\label{sec:finalDesign}
+\section{\bf Final Design}\label{sec:finalDesign}
 
 The final goal is to have an end-effector velocity of 9.47 $\frac{m}{s}$ at $45^o$.  
 The key-frame method was tested to throw at 4.8 $\frac{m}{s}$.  
@@ -11,10 +11,11 @@ Fig.~\ref{fig:hubo-step} shows the stepping motion of the robot.
 
 \begin{figure}[t]
   \centering
-\includegraphics[width=1.0\columnwidth]{./pix/throwPractice.png}
-  \caption{Hubo stepping 10 cm up and forwards increasing the end effector velocity by 2.3 $\frac{m}{s}$.}
+\includegraphics[width=1.0\columnwidth]{./pix/stepthrow.png}
+  \caption{(Left) Hubo stepping 10 cm up and forwards while pushing with dominant foot.  (Right) Hubo lands with non-dominant foot. As a result the end effectors velocity is increased by 2.3 $\frac{m}{s}$.}
   \label{fig:hubo-step}
 \end{figure}
+
 
 The addition of pushing off with the right foot and stepping forward introduced two problems.  1) The ZMP criteria is not satisfied throughout the motion and 2) the right foot would slip when pushing its body forward.  
 To avoid slip \textit{hook and loop} was paced on the bottom of the right foot (dominant) and on the throwing platform.  
@@ -22,14 +23,6 @@ This did not permanently attach the robot to the platform but it did allow for m
 This allowed the balancing controller to function adequately for the short step and maintain stability.
 The platform was added to ensure a more consistent ground for the robot to balance on than the baseball field can inherently provide.
 
-\begin{figure}[t]
-  \centering
-\includegraphics[width=0.6\columnwidth]{./pix/finalSpring1.png}
-\includegraphics[width=0.6\columnwidth]{./pix/finalSpring2.png}
-\includegraphics[width=0.6\columnwidth]{./pix/finalSpring3.png}
-  \caption{Spring loaded mechanism test launching the baseball.  Top: Pre-launch.  Middle: Launch.  Bottom: Pos-launch.  The mechanism added 3.0 $\frac{m}{s}$ to the end-effector velocity at its release point.}
-  \label{fig:hubo-spring}
-\end{figure}
 
 %\begin{figure*}[t]
 %  \centering
