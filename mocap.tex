@@ -16,7 +16,7 @@ Our approach is to:
 a) Chose a set MoCap model.  
 b) Preform motions where the pitch motions are decoupled (roll and yaw stays constant), avoids singularities and robot joint position limitations.  
 c) Combine joint values for near by joints (reduce the model to the same DOF as the robot).  
-d) Some tests require the addition of static offsets to joints to ensure the zero-moment-point (ZMP) criteria is satisfied as stated in Section~\ref{sec:sec:balance}
+d) Some tests require the addition of static offsets to joints to ensure the zero-moment-point (ZMP) criteria is satisfied as stated in Vukobratovic et. al.\cite{zmp35}.
 
 \begin{figure}[t]
   \centering
@@ -50,7 +50,18 @@ Fig.~\ref{fig:mocap-underhand} shows the human throwing the ball and the robot t
   \label{fig:mocap-underhand}
 \end{figure}
 
-To ensure balance throughout the motion the balance controller as described in Section~\ref{sec:sec:balance} was applied and the static ZMP criteria was checked for the entire trajectory.
+To ensure balance throughout the motion the balance controller described in Lofaro et. al.\cite{LofaroHumanoids2012} is implemented.  The control equation is defined as:
+
+\begin{equation}\label{eq:bal}
+\theta_n^{x_a} = \theta_t^{x_a} + \left(K_p^x+sK_d^x\right)\left(\sum\limits_{x \in t} \theta_{t}^x - \theta_{c}^x\right)
+%\theta_{n}^x = \theta_{t}^x + \left(K_p^x+sK_d^x\right)\left(\sum \theta_{t}^x - \theta_{c}^x\right)
+%\theta_{n}^x = \theta_{t}^x + (K_p^x+sK_d^x)(\sum \theta_{t}^x - \theta_{c}^x)
+%\theta_{new} = \theta_{traj} + (K_p+sK_d)(\sum \theta_{leg} - \theta_{IMU})
+\end{equation}
+
+Where $\theta_t$ is the desired trajectory of the lower body (pitch or roll), $x$ denotes pitch or roll and $x_a$ denotes pitch or roll on the ankle.  $\theta_{c}$ is the orientation of the center of mass in the global frame.  $\theta_n$ is the resulting trajectory.  $K_p$ and $K_d$ are the proportional and derivative gains.  The resulting control allows for a stable stance even with perturbations from upper body motions.
+
+The balance controller is applied and the static ZMP criteria is checked for the entire trajectory.
 The human subject threw the ball approximately eight feet (244 cm).  
 The mapping of the latter motion caused the robot to throw the ball approximately five feet (152 cm).
 The discrepancy comes from the proportional difference in limb length from the human to the robot.

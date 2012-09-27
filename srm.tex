@@ -7,42 +7,21 @@ The SRM is created by making a sparse map of the reachable end-effector position
 The desired trajectory in free space is placed within the sparse map with the first point of the trajectory being a known pose from the original sparse map. 
 
 \begin{equation}
-L_d(0) \in SRM
+L_d \in SRM
 \end{equation}
 
-$L_d(0)$ is known both in joint space and in free space.
-The Jacobian Transpose Controller method of inverse kinematics as described by Wolovich et al.\cite{4048118} is then used to find the subsequent joint space values for the free space points in the trajectory. 
-
-\begin{equation}
-q_1 = q_0 + \dot{q}_0 = q_0 + kJ^Te|_{x_0}^{x_1}
-\end{equation}
-
-Where $q_0$ and $x_0$ is the current pose and corresponding end-effector position respectively.  $q_1$ is the next pose for the next desired end-effector position $x_1$.
-Each desired end-effector position $x$ must be within a euclidean distance $d$ (user defined) from any point in the SRM.
-
-\begin{equation}
-min \left(|x - SRM| \right) < d
-\end{equation}
-
-If one of the points in $x$ fails this criteria a new random point is chosen for $L_d(0)$ and the process is repeated.
-
-Each pose in the trajectory is checked against the collision model to guarantee no self-collisions.  The collision model is based on the OpenRAVE model of the Hubo platform called OpenHUBO, see Fig~\ref{fig:vHubo}.
+$L_d$ is known both in joint space and in free space.
+The SRM is visualized by plotting the free space in the SRM around the virtual model of the HUBO platform called OpenHUBO, see Fig~\ref{fig:vHubo}.
+Further explanation of this method is described in Lofaro et. al.\cite{dlofaro-srm}.
 
 \begin{figure}[ht]
   \centering
-%\includegraphics[width=0.5\columnwidth]{./pictures/hubo1s.png}\includegraphics[width=0.5\columnwidth]{./pictures/hubo2s.png}
-
-
-%\includegraphics[width=0.5\columnwidth]{./pix/hCol.png}%\includegraphics[width=0.5\columnwidth]{./pix/hBody.png}
-
 \includegraphics[width=0.36\columnwidth]{./pix/SRM.png}\includegraphics[width=0.36\columnwidth]{./pix/ThrowTrajDiag.png}\includegraphics[width=0.28\columnwidth]{./pix/hCol.png}
   \caption{OpenRAVE model of Hubo KHR-4. Left: Model with SRM of right arm.  Center: SRM (blue) with setup and velocity phase trajectories (green) Right: Collision Geometry\cite{dlofaro-srm}  }
-  
-  %\caption{OpenHUBO - OpenRAVE model of Hubo KHR-4.  Left: Collision Geometry.  Right: Model with protective shells\cite{dlofaro-srm}.  }
   \label{fig:vHubo}
 \end{figure}
 
-The commanded trajectory produces the desired velocity of 4.9 m/s at 60$^o$.  This was then tested on the OpenHUBO and on the Jaemi Hubo platform, Fig~\ref{fig:3dThrowReal} and Fig~\ref{fig:3dThrowReal} respectively.
+When testing the commanded trajectory produces the desired velocity of 4.9 m/s at 60$^o$.  This was then tested on the OpenHUBO and on the Jaemi Hubo platform, Fig~\ref{fig:3dThrowReal} and Fig~\ref{fig:3dThrowReal} respectively.
 
 
 
@@ -66,7 +45,7 @@ The commanded trajectory produces the desired velocity of 4.9 m/s at 60$^o$.  Th
   \label{fig:3dThrowReal}
 \end{figure}
 
-To ensure balance throughout the motion the balance controller as described in Section~\ref{sec:sec:balance} was applied and the static ZMP criteria was checked for the entire trajectory.
+To ensure balance throughout the motion the balance controller as described in Eq.~\ref{eq:bal} was applied and the static ZMP criteria was checked for the entire trajectory.
 This method worked as desired.  
 In approximately 10\% of the tests one or more joints would over torque and shutdown.  
 This is due to the system not taking the robots power limitations into account. 
